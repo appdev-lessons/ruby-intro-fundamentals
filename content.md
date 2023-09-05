@@ -1,18 +1,17 @@
-# The fundamentals of Ruby
+# RB Fundamentals of Ruby draft
+
+* Table of Contents
+{:toc}
+
+The fundamental syntax of HTML looks like this:
+
+The fundamental syntax of CSS looks like this:
 
 The fundamental syntax of Ruby looks like this:
 
 ```
 2.add(3)
 ```
-
-- The thing on the left side of the dot (`.`), in this example `2`, is called the **object**.
-- The thing on the right side of the dot, in this example `.add(3)`, is called the **method**.
-- Within the method, there are two parts:
-	- `add` is called the **name** of the method.
-	- `(3)` is called the **argument** to the method.
-
-All together, the object, method, and argument is called an **expression**.
 
 <aside markdown="1">
 The `add` method increases the number that it was called upon (the number on the left side of the dot) by the number provided as its argument (the number within the parentheses), and returns the result.
@@ -41,7 +40,7 @@ The `multiply` method takes the number it was called upon, multiplies it by the 
 	- That's right!
 - any
 	- Not quite. Hint: The expression is equivalent to `5 × 2`.
-{: .free_text_number #five_times_two title="Five times two" points="1" answer="1" }
+{: .free_text_number #five_times_two title="Five times two" points="1" answer="[1]" }
 
 ---
 
@@ -90,7 +89,7 @@ The `divided_by` method takes the number it was called upon, divides it by the n
     So the expression is actually equivalent to `4 + (6 ÷ 2)`. Give it another try!
 - any
 	- Not quite. Hint: The expression is equivalent to `4 + (6 ÷ 2)`.
-{: .free_text_number #order_of_operations_1 title="Order of operations 1" points="1" answer="1" }
+{: .free_text_number #order_of_operations_1 title="Order of operations 1" points="1" answer="[1]" }
 
 ---
 
@@ -106,7 +105,7 @@ end
 
 2.add(3)
 ```
-{: .repl #without_pp title="without pp" points="1" setup_code="1-7" }
+{: .repl #without_pp title="without_pp" points="1" setup_code="1-7" }
 
 Wait a second — why didn't a `5` appear in the terminal?
 
@@ -122,7 +121,7 @@ end
 
 self.pp(2.add(3))
 ```
-{: .repl #with_self_pp title="with self.pp" points="1" setup_code="1-7" }
+{: .repl #with_self_pp title="with_self_pp" points="1" setup_code="1-7" }
 
 Now when you run the program, you should see some output in the terminal! But what is `self`, and what is `pp`?
 
@@ -149,7 +148,7 @@ self.pp(2.add(3))
 self.pp(5.multiply(2))
 self.pp(4.add(6.divided_by(2)))
 ```
-{: .repl #multiline_self_pp title="multiline self.pp" points="1" setup_code="1-7" }
+{: .repl #multiline_self_pp title="multiline_self_pp" points="1" setup_code="1-7" }
 
 But does this mean that every time we want to see the output of a line, we're going to have to wrap the whole line within `self.pp(  )`? Hundreds, or thousands of times? Ugh, what a pain!
 
@@ -169,9 +168,9 @@ Can also be written as:
 pp(4.add(6.divided_by(2)))
 ```
 
-You can _only_ use this shortcut when calling methods on `self`! For example, it wouldn't make sense to, rather than `2.add(3)`, write just `add(3)` by itself.
+You can _only_ use this shortcut when calling methods on `self`! For example, it wouldn't make sense to, rather than `2.add(3)`, say just `add(3)` by itself.
 
-`self` is known as the "implicit receiver" of all method calls that are not explicitly attached to an object with a `.`.
+`self` is known as the "implicit receiver" of all method calls that are not explicity attached to an object with a `.`.
 
 #### Dropping the parentheses around arguments
 
@@ -248,14 +247,10 @@ We rushed to this point in order to gain the ability to write expressions and pr
 
 Let's examine the first example of a Ruby expression again:
 
-```
-2.add(3)
-```
-
 - The thing on the left side of the dot is the **object** (a.k.a. "receiver") and the thing on the right side of the dot is the **method** (a.k.a. "message").
 - I think of objects as _nouns_, and methods as _verbs_. An object is some information that represents a thing, and methods are actions that the thing is able to perform.
 - Together, the object, dot, and method are called one **expression**.
-- The expression is **evaluated** — i.e. the method is executed on the object. The result is a new object, which replaces the original expression. This object is called the **return value** of the method.
+- The expression is **evaluated** — i.e. the method is executed on the object. The result is a new object, which replaces the original expression. This object is called the return value of the method.
 
 ## Ruby's vocabulary
 
@@ -337,27 +332,27 @@ pp "Mississippi".length
 ```ruby
 # put the code here
 ```
-{: .repl #class_experiment title="Experiment with classes"}
+{: .repl #class_experiment title="Experiment with Classes"}
 
-After you experiment with the different inputs, write a program that prints how many characters are in the word "Mississippi". Press Run below the editor to see your output. When you think you've got it, press Run next to the test "How long is Mississippi?"
+After you experiment with the different inputs, write a program below that prints how many characters are in the word "Mississippi". Press Run below the editor to see your output. When you think you've got it, press Run next to the test "How long is Mississippi?"
 
 ```ruby
-describe "Experiment with classes" do
-  it "should print the length of Mississippi" do
+describe "how long is Mississippi" do
+  it "should print 11" do
     path = "/tmp/code.rb"
 
     File.foreach(path) do |line|
       if line.include?("11")
         expect(line).to_not match(/11/),
-          "Expected code block to NOT print the String literal '11', but did."
+          "Expected REPL to NOT print the String literal '11', but did."
       end
     end
 
-    expect { require_relative(path) }.to output(/11/).to_stdout
+    expect { require_relative(path) }.to output("11\n").to_stdout
   end
 end
 ```
-{: .repl-test #class_experiment_test_1 for="class_experiment" title="Experiment with classes should print the length of Mississippi" points="1"}
+{: .repl-test #class_experiment_test_1 for="class_experiment" title="How long is Mississippi?" points="1"}
 
 ---
 
@@ -383,7 +378,7 @@ What do you expect will happen if we ask `"Mississippi"` if it is `even?` (with 
 
 ### _Do_, or do not. There is no  _read_. 
 
-Before we forced you to by asking a question, were you typing out every expression that you were reading about into an editor to experiment with it?
+Before we forced you to by asking a question, were you typing out every expression that you were reading baout into an editor to experiment with it?
 
 If not, then you're going to struggle. If you're just _reading_, you won't be successful at learning programming; you have to _do_ in order to build up some muscle memory and intuition. _Experimentation and practice are both crucial._ 
 
@@ -430,7 +425,7 @@ pp "Java is a joy".gsub("Java", "Ruby")
 
 In order to do its job, the `gsub` method needs to know what substring to get rid of and what to replace it with. So we give it inputs, or **arguments**, which must come in parentheses _immediately_ following the method. If the method takes multiple arguments, as `gsub` does, then they are separated by commas.
 
-Here's another graded code block. Modify the code to print `"Hello, world?"` to get the test to pass:
+Here's another editor with an automated test below it. Modify the code to print `"Hello, world?"` to get the test to pass:
 
 ```ruby
 pp "Hello, world!".gsub()
@@ -438,14 +433,14 @@ pp "Hello, world!".gsub()
 {: .repl #gsub_arguments_tested title="Hello, world?"}
 
 ```ruby
-describe "Hello, world?" do
+describe "hello world" do
   it "should print 'Hello, world?'" do
     path = "/tmp/code.rb"
-    expect { require_relative(path) }.to output(/Hello, world?/).to_stdout
+    expect { require_relative(path) }.to output("\"Hello, world?\"\n").to_stdout
   end
 end
 ```
-{: .repl-test #gsub_arguments_tested_test_1 for="gsub_arguments_tested" title="Hello, world? should print 'Hello, world?'" points="1"}
+{: .repl-test #gsub_arguments_tested_test_1 for="gsub_arguments_tested" title="Hello, world?" points="1"}
 
 What is the purpose of `gsub`'s first argument, and what is the purpose of the second argument?
 
@@ -480,7 +475,7 @@ However, one situation in which whitespace _does_ matter has to do with the **pa
 
 Can you spot the difference? **Don't put a space between the method and the opening parenthesis.**
 
-It's a very easy mistake to make, so I just wanted to warn you early on so that you can begin developing good muscle memory. Try the bad version in the runnable code block and see what the error message looks like:
+It's a very easy mistake to make, so I just wanted to warn you early on so that you can begin developing good muscle memory. Try the bad version in your sandbox and see what the error message looks like:
 
 ```ruby
 pp "Raghu@Bet@ina".gsub ("@", "") # bad!
@@ -527,13 +522,9 @@ Every programming language has its own syntax for leaving comments in the code.
 
 Comments in Ruby are done with one `#` at the start of the line.
 
-In HTML files, comments are wrapped within:
+In HTML files, comments are wrapped within `<!-- comment here -->`
 
-`<!-- comment here -->`
-
-In CSS, comments are wrapped within:
-
-`/* comment here */` 
+In CSS, comments are wrapped within `/* comment here */` 
 
 Luckily in most text editors, the keyboard shortcut <kbd>Ctrl</kbd>+<kbd>/</kbd> (Windows) or <kbd>Cmd</kbd>+<kbd>/</kbd> (Mac) will automatically detect the language you're writing and comment the line for you.
 </aside>
@@ -556,14 +547,14 @@ pp "Raghu@Bet@ina".gsub ("@", "")
 {: .repl #code_comments title="Code comments"}
 
 ```ruby
-describe "Code comments" do
+describe "gsub without whitespace" do
   it "should print 'RaghuBetina'" do
     path = "/tmp/code.rb"
-    expect { require_relative(path) }.to output(/RaghuBetina/).to_stdout
+    expect { require_relative(path) }.to output("\"RaghuBetina\"\n").to_stdout
   end
 end
 ```
-{: .repl-test #code_comments_test_1 for="code_comments" title="Code comments should print 'RaghuBetina'" points="1"}
+{: .repl-test #code_comments_test_1 for="code_comments" title="Code comments" points="1"}
 
 ## Variables are boxes
 
@@ -579,7 +570,7 @@ However, so far we haven't been doing much with the **return value** of each exp
 
 We're not really able to make any forward progress when we only perform one operation at a time. Programs get interesting only when we start to take the return value of one expression and feed it into the _next_ method. That's how we craft our own novel, useful applications from the basic building blocks of Ruby.
 
-So: let's start to store our return values for future reference, instead of dropping them on the ground. We do this using **variables**, or, as I like to think of them, _boxes_. Let's try it:
+So: let's start to store our return values for future reference, instead of dropping them on the ground. We do this using **variables**, or as I like to think of them, _boxes_. Let's try it:
 
 Run the following:
 
@@ -601,11 +592,11 @@ When I read
 upcase_string = "hello world!".upcase
 ```
 
-out loud, I say "the string hello world dot upcase _is assigned_ to the variable `upcase_string`".
+out loud, I say "the string hello world dot upcase _is assigned_ to the variable upcase_string".
 
 **I read the right side first, because that's how Ruby reads it too**; it first evaluates the expression on the right side of the `=`, and _then_ it stores the resulting value in the variable on the left.
 
-Now add the `reverse` method to the runnable code block on the `upcase_string` variable:
+Now add the `reverse` method to the previous REPL on the `upcase_string` variable:
 
 ```ruby
 upcase_string = "hello world!".upcase
@@ -649,7 +640,7 @@ pp upcase_string_reverse_gsub
 
 Fortunately, we can create as many variables as we want.
 
-In the graded code block below, move line-by-line through the code and **debug it**, so that the terminal prints "raghubetina" for the test to pass:
+In the REPL below, move line-by-line through the code and **debug it**, so that the terminal prints "raghubetina" for the test to pass:
 
 ```ruby
 username = "Raghu@Bet@ina"
@@ -661,17 +652,17 @@ username_fixed_downcased = username_fixed
 
 pp username_fixed_downcased
 ```
-{: .repl #debug_variables title="Debug it"}
+{: .repl #debug_variables title="Debug it!" points="1"}
 
 ```ruby
 describe "debugging" do
   it "should print 'raghubetina'" do
     path = "/tmp/code.rb"
-    expect { require_relative(path) }.to output(/raghubetina/).to_stdout
+    expect { require_relative(path) }.to output("\"raghubetina\"\n").to_stdout
   end
 end
 ```
-{: .repl-test #debug_variables_test_1 for="debug_variables" title="Debug it should print 'raghubetina'" points="1"}
+{: .repl-test #debug_variables_test_1 for="debug_variables" title="Debug it!" points="1"}
 
 ### Updating variables 
 
@@ -742,7 +733,7 @@ Most programs are just a long succession of statements where we do some work wit
     - Yes!
 - can only have one operation on the right side.
     - Not quite.
-{: .choose_all #assignment title="Assignment operator" points="3" answer="[1,3,4]" }
+{: .choose_all #assignment title="Assignment operator" points="1" answer="[1,3,4]" }
 
 ### Variable naming rules 
 
@@ -762,7 +753,7 @@ That's it for the fundamental grammar of Ruby!
 storage_box = noun.verb(input1, input2)
 ```
 
-Of course, there's a bit more syntax (like how to define our own nouns and verbs) that we need to learn, but for the most part, `object.method` is the bulk of what we do.
+It's not _that_ much worse than the calculator language, is it? Of course, there's a bit more syntax (like how to define our own nouns and verbs) that we need to learn, but for the most part, `object.method` is the bulk of what we do.
 
 Now we need to spend some time expanding our _vocabulary_ — what are the most commonly used data types in Ruby, and what are some of their methods? That's coming up next.
 
